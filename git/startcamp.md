@@ -92,3 +92,4 @@ git status를 통해 어떤 명령어를 써야하는지 확인할 수도 있음
 	staging area에서 working directory로 되돌리기
 	-> git 저장소에 "commit이 존재하는 경우"
 
+
