@@ -83,7 +83,6 @@
 
 ## Unstage 하는 명령어
 git status를 통해 어떤 명령어를 써야하는지 확인할 수도 있음
-![git status]()
 
 ### git rm --cached
 	staging area에서 working directory로 되돌리기
