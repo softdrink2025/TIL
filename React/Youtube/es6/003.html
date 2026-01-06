@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      name: "자바스크립트 복습",
+      normalFunc: function() {
+        console.log("normalFunc this.name : ", this.name);
+      },
+      // 객체의 메서드를 정의할 때 화살표 함수를 사용하면
+      // this가 자신이 속해 있는 객체가 아닌 windows를 가리키게 된다.
+      arrowFunc: () => {
+        console.log("arrowFunc this.name : ", this);
+      }
+    };
+
+    obj.normalFunc();
+    obj.arrowFunc();
+  </script>
+</body>
+</html>

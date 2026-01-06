@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    hello = function () {
+      return "안녕 안녕 안녕하세요";
+    }
+    let a = hello();
+    console.log(a);
+
+    // 화살표 함수로 만들어보기
+    hello2 = () => {
+      return "안녕하세요 화살표 함수 입니다.";
+    }
+    let a2 = hello2();
+    console.log(a2);
+
+    // 더 줄이기
+    hello3 = () => "안녕하세요 화살표 함수 더 줄여봤습니다.";
+    let a3 = hello3();
+    console.log(a3);
+
+    // 매개변수 있을 때
+    hello4 = (val) => `${val} 매개변수 넣어봤습니다.`;
+    // hello4 = val => `${val} 매개변수 넣어봤습니다.`;
+    let a4 = hello4('안녕하세요');
+    console.log(a4);
+
+  </script>
+</body>
+</html>
