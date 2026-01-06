@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <pre id="demo"></pre>
+  <script>
+    const name = '홍길동';
+    const age = 30;
+    // const message = "안녕하세요, " + name + "님 \n" + "당신은 " + age +"세 입니다.";
+    // 템플릿 문자열 사용
+    const message = `안녕하세요, ${name}님
+당신은 ${age}세 입니다.`;
+    console.log(message);
+
+    const x = `
+    안녕
+        하세요.
+    반갑
+        습니다.`;
+
+    document.getElementById("demo").innerHTML = x;
+
+    let sung = "홍";
+    let myung = "길동";
+    let text = `안녕하세요. 저는 ${sung} ${myung} 입니다.`;
+    console.log(text)
+
+    let price = 1000;
+    let quantity = 7;
+    let total = `Total: ${price * quantity}`;
+    console.log(total)
+
+    const isAdmin = false;
+    const admin = `Status: ${isAdmin? 'Admin' : 'User'}`;
+    console.log(admin)
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  const human = ['홍길동', '남자', '22'];
+  // 과거방식
+  // const name = human[0];
+  // const gender = human[1];
+  // const age = human[2];
+  // console.log(name, gender, age);
+
+  // 구조분해할당
+  // const [name, gender, age] = human;
+  // const [name,, age] = human; // gender가 필요없을 경우
+
+  // console.log(name);
+
+  function dateInfo(d){
+    const date = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+
+    return [date, month, year];
+  }
+
+  const [date, month, year] = dateInfo(new Date());
+  console.log(date, month, year);
+
+  const person = {
+    name: "홍길동",
+    gender: "남",
+    age: 22
+  }
+
+  // let {name, age, gender} = person;
+  // let {age} = person;
+  let {name, age, gender, country = "대한민국"} = person; // 다른 요소를 추가할 수도 있음
+
+  console.log(age)
+</script>
+</body>
+</html>
