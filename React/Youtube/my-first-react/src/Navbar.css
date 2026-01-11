@@ -1,0 +1,13 @@
+.inactive-link {
+  color: #333;
+  text-decoration: underline;
+  font-weight: normal;
+  padding: 5px 10px;
+}
+
+.active-link {
+  color: #007bff;
+  text-decoration: normal;
+  font-weight: bold;
+  padding: 5px 10px;
+}
