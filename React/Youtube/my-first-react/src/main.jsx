@@ -1,19 +1,24 @@
-import { createRoot } from 'react-dom/client';
-import useFetch from "./useFetch";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-function Home() {
+const Home = () => <h1>🏠 홈페이지 입니다.</h1>;
+const About = () => <h1>ℹ️ 소개 페이지입니다.</h1>
+const NotFound = () => <h1>❌ 404: 페이지를 찾을 수 없습니다. </h1>;
 
-    const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />,
+        errorElement: <NotFound />
+    },
+    {
+        path: "/about",
+        element: <About />,
+    },
+]);
 
-    return (
-        <>
-            {data &&
-                data.map((item) => {
-                    return <p key={item.id}>{item.title}</p>
-                })
-            }
-        </>
-    );
-}
 
-createRoot(document.getElementById('root')).render(<Home />);
+createRoot(document.getElementById('root')).render(
+    <RouterProvider router={router} />
+)

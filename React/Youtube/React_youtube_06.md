@@ -440,3 +440,49 @@ createRoot(document.getElementById('root')).render(<Home />);
 ```
 - main.jsx
 - custom Hook 사용
+
+## Router
+- React Router v6.4부터는 Data API라는 새로운 방식이 도입됨
+- 라우터 설정을 자바스크립트 객체 형태로 정의
+- createBrowserRouter와 RouterProvider를 사용
+
+## createBrowserRouter
+- 웹 애플리케이션의 모든 경로와 해당 경로에서 보여줄 컴포넌트를 정의하여 하나의 라우터 객체를 만드는 함수
+- 작동방식
+     - 경로와 컴포넌트를 담은 자바스크립트 배열을 인수로 받음
+     - 브라우저의 History API를 사용하여 URL 변경을 감지하고 관리할 수 있는 라우터 인스턴스를 생성
+     - 이 라우터 객체는 애플리케이션의 전체 라우팅 규칙을 담고 있는 설계도라고 생각할 수 있다
+
+## RouterProvider
+- createBrowserRouter로 만든 라우터 객체를 받아서 React 애플리케이션의 최상위에 적용시켜주는 컴포넌트
+- 작동 방식
+    - router라는 props로 createBrowserRouter가 반환한 라우터 객체를 전달받음
+    - 이 컴포넌트가 실제로 라우팅을 활성화하고, 현재 URL에 따라 어떤 컴포넌트를 렌더링해야 할지 결정하는 역할을 함
+    - 웹 사이트에 '교통 통제 시스템'을 설치하는 것이라고 보면 됨
+
+```jsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+const Home = () => <h1>🏠 홈페이지 입니다.</h1>;
+const About = () => <h1>ℹ️ 소개 페이지입니다.</h1>
+const NotFound = () => <h1>❌ 404: 페이지를 찾을 수 없습니다. </h1>;
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />,
+        errorElement: <NotFound />
+    },
+    {
+        path: "/about",
+        element: <About />,
+    },
+]);
+
+
+createRoot(document.getElementById('root')).render(
+    <RouterProvider router={router} />
+)
+```
