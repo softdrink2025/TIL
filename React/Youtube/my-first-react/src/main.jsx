@@ -1,25 +1,19 @@
-import { useState, useRef, useEffect } from "react";
 import { createRoot } from 'react-dom/client';
+import useFetch from "./useFetch";
 
-function App() {
-    const [inputValue, setInputValue] = useState("");
-    const count = useRef(0);
+function Home() {
 
-    useEffect(() => {
-      count.current = count.current + 1;
-      console.log(count.current);
-        
-    });
+    const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
 
     return (
         <>
-            <p>값을 입력해 보세요.</p>
-            <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-            <p>렌더링 횟수 : {count.current}</p>
+            {data &&
+                data.map((item) => {
+                    return <p key={item.id}>{item.title}</p>
+                })
+            }
         </>
-    )
+    );
 }
 
-createRoot(document.getElementById('root')).render(
-    <App />
-)
+createRoot(document.getElementById('root')).render(<Home />);
