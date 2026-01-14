@@ -29,3 +29,31 @@ export default {
 - tw-todos 폴더 참고
 - npm install lucide-react
   - 아이콘 세트. 리액트 컴포넌트 형태로 사용. svg기반
+
+  ## 2026/01/14
+
+🧭 정렬 로직 분석
+
+1. 첫 번째 기준: id를 이용한 내림차순 (최신순)
+```JavaScript
+if(a.completed === b.completed) {
+
+  return b.id - a.id;
+
+}
+```
+- 조건: 두 항목의 완료 여부(completed)가 같을 때(둘 다 완료했거나, 둘 다 미완료일 때) 실행됩니다.
+- 동작: b.id - a.id는 내림차순 정렬을 의미합니다. 보통 id는 생성될 때마다 커지므로, 숫자가 큰(최신) 데이터가 위로 올라오게 됩니다.
+
+2. 두 번째 기준: completed 여부 (미완료 우선)
+```JavaScript
+return a.completed ? 1 : -1;
+```
+- 조건: 완료 여부가 다를 때 실행됩니다.
+- 동작: * a.completed가 true이면 1을 반환: a를 뒤로 보냅니다. (완료된 일을 아래로)
+- a.completed가 false이면 -1을 반환: a를 앞으로 보냅니다. (미완료된 일을 위로)
+
+3. b - a를 하면 내림차순(큰 게 위로)이 될까?
+- 자바스크립트 sort의 약속 때문입니다.
+  - 반환값이 음수(-)일 때: a를 앞으로 보냄.
+  - 반환값이 양수(+)일 때: b를 앞으로 보냄.
